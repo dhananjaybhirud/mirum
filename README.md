@@ -1,10 +1,10 @@
 ## Available Scripts
 
-In the project directory, install packages:
+In the project directory, install dependancies using:
 
 ### `yarn install`
 
-In the project directory, you can run:
+In the project directory, you can run to start project:
 
 ### `yarn start`
 

@@ -232,7 +232,11 @@ padding-left: 20px;
         }
         .calculate-btn-div{
             padding: 15px 0;
-            border-top:2px solid #000
+            border-top:2px solid #000;
+            .btn{
+                height: 50px;
+                font-weight: 700;
+            }
         }
     }
 

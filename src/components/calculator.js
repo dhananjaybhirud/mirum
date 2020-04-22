@@ -134,7 +134,7 @@ class Calculator extends Component {
 
                             <div className="row calculate-btn-div">
                                 <div className="col-12 p-0 text-center">
-                                   <Button type="submit" className="btn btn-warning">CALCULATE</Button>
+                                   <Button type="submit" className="btn btn-lg btn-warning">CALCULATE</Button>
                                 </div>
                             </div>
 

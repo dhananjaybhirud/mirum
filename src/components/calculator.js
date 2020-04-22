@@ -3,6 +3,47 @@ import { Button } from "react-bootstrap";
 
 
 class Calculator extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            amount: 30000,
+            term: 55,
+            rate: 3,
+            yearly: 1 ,
+            total: 5700000
+        };
+    
+        this.handleChange = this.handleChange.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
+      }
+      
+      handleChange(event, type) {
+             console.log(event.target.value, type);
+      }
+
+    
+      handleSubmit(event) {
+        event.preventDefault();
+        const data = new FormData(event.target);
+        this.state.yearly = parseFloat(this.state.yearly);
+        this.state.rate = parseFloat(this.state.rate);
+        this.state.amount = parseFloat(this.state.amount);
+
+        let nt = this.state.yearly * this.state.term;
+        let newrate = this.state.rate /100; 
+
+        const power =  1 + (newrate / this.state.yearly);
+
+        let newPower = Math.pow(power, nt);
+        
+
+        this.state.total = this.state.amount * newPower;
+
+        this.setState({total: this.state.total});
+
+        console.log(this.state);
+        console.log(power);
+      }
     render() {
         return (
             <section className="calculator">
@@ -16,7 +57,7 @@ class Calculator extends Component {
                        <img className="left-poll" src={window.location.origin + '/cal-left-poll.png'} />
                     </div>
                     <div className="col-12 col-md-8">
-                        <div className="calculator-wrapper">
+                        <form className="calculator-wrapper" onSubmit={this.handleSubmit}>
                             <div className="top-bar"></div>
 
                             <div className="row m-0">
@@ -27,7 +68,12 @@ class Calculator extends Component {
                                     <span class="vertical-line"></span>
                                 </div>
                                 <div className="col-10 p-0">
-                                    <input className="form-control form-control-lg" type="number" />
+                                    <input className="form-control form-control-lg"
+                                    defaultValue={this.state.amount}
+                                    onChange={(event) => {
+                                        this.setState({amount: event.target.value})
+                                    }}
+                                     type="number" />
                                 </div>
                             </div>
                             <br />
@@ -43,7 +89,13 @@ class Calculator extends Component {
                                     <div className="row m-0">
                                         
                                         <div className="col-4 p-0">
-                                            <input className="form-control form-control-lg" type="number" />
+                                            <input
+                                            defaultValue={this.state.term}
+                                            onChange={(event) => {
+                                                this.setState({term: event.target.value})
+                                            }}
+                                            max="99"
+                                             className="form-control form-control-lg" type="number" />
                                         </div>
                                         <div className="col-8 p-0 d-flex  align-items-center">
                                             <label className="label">
@@ -61,7 +113,14 @@ class Calculator extends Component {
                                             </label>
                                         </div>
                                         <div className="col-4 p-0">
-                                            <input className="form-control form-control-lg" type="number" />
+                                            <input
+                                             className="form-control form-control-lg"
+                                             defaultValue={this.state.rate}
+                                             onChange={(event) => {
+                                                this.setState({rate: event.target.value})
+                                            }}
+                                             max="99"
+                                            type="number" />
                                         </div>
                                         <div className="col-4 p-0 d-flex  align-items-center">
                                             <label className="label">
@@ -75,7 +134,7 @@ class Calculator extends Component {
 
                             <div className="row calculate-btn-div">
                                 <div className="col-12 p-0 text-center">
-                                   <Button className="btn btn-warning">CALCULATE</Button>
+                                   <Button type="submit" className="btn btn-warning">CALCULATE</Button>
                                 </div>
                             </div>
 
@@ -87,11 +146,12 @@ class Calculator extends Component {
                                     <span class="vertical-line"></span>
                                 </div>
                                 <div className="col-10 p-0">
-                                    <input className="form-control form-control-lg" readOnly type="number" />
+                                    <input className="form-control form-control-lg" readOnly
+                                    value={this.state.total} type="number" />
                                 </div>
                             </div>
 
-                        </div>
+                        </form>
                     </div>
                     <div className="col-md-2">
                        <img className="right-cloud" src={window.location.origin + '/cloud.png'} />

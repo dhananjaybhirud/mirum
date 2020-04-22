@@ -7,8 +7,8 @@ class Calculator extends Component {
         super(props);
         this.state = {
             amount: 30000,
-            term: 55,
-            rate: 3,
+            term: '55',
+            rate: '03',
             yearly: 1 ,
             total: 5700000
         };
@@ -24,25 +24,35 @@ class Calculator extends Component {
     
       handleSubmit(event) {
         event.preventDefault();
-        const data = new FormData(event.target);
+        // const data = new FormData(event.target);
+        this.state.term = parseFloat(this.state.term);
         this.state.yearly = parseFloat(this.state.yearly);
         this.state.rate = parseFloat(this.state.rate);
         this.state.amount = parseFloat(this.state.amount);
 
-        let nt = this.state.yearly * this.state.term;
-        let newrate = this.state.rate /100; 
+        // let nt = this.state.yearly * this.state.term; 
+        // let newrate = this.state.rate /100; 
+        // const power =  1 + (newrate / this.state.yearly);
+        // let newPower = Math.pow(power, nt);
+        // this.state.total = this.state.amount * newPower;
 
+
+        let nt = this.state.yearly * this.state.term; 
+
+        let newrate = this.state.rate /100; 
+        
         const power =  1 + (newrate / this.state.yearly);
 
         let newPower = Math.pow(power, nt);
-        
 
         this.state.total = this.state.amount * newPower;
 
+
+
+
         this.setState({total: this.state.total});
 
-        console.log(this.state);
-        console.log(power);
+    
       }
     render() {
         return (
@@ -92,8 +102,12 @@ class Calculator extends Component {
                                             <input
                                             defaultValue={this.state.term}
                                             onChange={(event) => {
-                                                this.setState({term: event.target.value})
+                                                this.setState({
+                                                    term: event.target.value
+                                                    // term: ((event.target.value < 10) ? ('0' + event.target.value) : event.target.value
+                                                })
                                             }}
+                                            //  pattern="[0-9*]"
                                             max="99"
                                              className="form-control form-control-lg" type="number" />
                                         </div>
@@ -117,14 +131,14 @@ class Calculator extends Component {
                                              className="form-control form-control-lg"
                                              defaultValue={this.state.rate}
                                              onChange={(event) => {
-                                                //  let temp = event.target.value;
-                                                //  if(temp < 10){
-                                                //      '0' + temp
-                                                //  }
-                                                this.setState({rate: event.target.value})
+                                                this.setState({
+                                                    rate:  event.target.value
+                                                    // rate: ((event.target.value < 10) ? ('0' + event.target.value) : event.target.value)
+                                                })
                                              }}
-                                             maxLength="2"
-                                             type="text" />
+                                            //  pattern="[0-9*]"
+                                             max="99"
+                                             type="number" />
                                         </div>
                                         <div className="col-4 p-0 d-flex  align-items-center">
                                             <label className="label">

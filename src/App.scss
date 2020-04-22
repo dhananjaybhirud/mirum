@@ -40,12 +40,15 @@
 }
 
 
+// Main code start here 
+
 html, body{
     color: #484848;
     // font-weight: 600;
     font-size: 14px;
     font-family: "MyriadPro";
 }
+
 *{
     transition: all 0.4s linear;
 }
@@ -374,7 +377,7 @@ footer.footer{
     }
 }
 
-/* loader-13*/
+/* Animations */
 
 @keyframes loader13 {
     0%   { transform: translateY(2px) }
@@ -390,3 +393,53 @@ footer.footer{
     100% { transform: translateX(2px) rotateX(00deg) } 
 }
    
+
+
+
+
+// Media queries will come here for specific devices 
+
+
+
+/* Except mobile devices  */
+@media (min-width: 576px) {
+
+}
+
+/* Medium devices (tablets, 768px and up) The navbar toggle appears at this breakpoint */
+@media (min-width: 768px) {
+
+}
+
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) {
+
+}
+
+/* Extra large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) {
+
+}
+
+
+@media (max-width: 1199px) {
+
+}
+
+@media (max-width: 991px) {
+
+}
+
+@media (max-width: 767px) {
+
+}
+
+@media (max-width: 575px) {
+ 
+}
+
+
+/* IE 10+ */
+@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+
+}

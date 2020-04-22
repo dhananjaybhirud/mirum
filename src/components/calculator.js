@@ -117,10 +117,14 @@ class Calculator extends Component {
                                              className="form-control form-control-lg"
                                              defaultValue={this.state.rate}
                                              onChange={(event) => {
+                                                //  let temp = event.target.value;
+                                                //  if(temp < 10){
+                                                //      '0' + temp
+                                                //  }
                                                 this.setState({rate: event.target.value})
-                                            }}
-                                             max="99"
-                                            type="number" />
+                                             }}
+                                             maxLength="2"
+                                             type="text" />
                                         </div>
                                         <div className="col-4 p-0 d-flex  align-items-center">
                                             <label className="label">

@@ -7,7 +7,7 @@ class Menu extends Component {
         return (
             <Navbar collapseOnSelect expand="lg" className="justify-content-end bg-transparent fixed-top">
                 <Navbar.Brand href="#home" className='p-0'>
-                    <img src={window.location.origin + '/logo.png'} height='40'/>
+                    <img src={window.location.origin + '/logo.png'} height='60'/>
                 </Navbar.Brand>
             </Navbar>
         )
